@@ -18,36 +18,15 @@ Install **Netdata** using Docker to monitor system and application performance m
 ```bash
 docker run -d --name=netdata -p 19999:19999 --cap-add SYS_PTRACE --security-opt apparmor=unconfined netdata/netdata
 2. Verified Container Running
-bash
-Copy
-Edit
-docker ps
-Output:
-
-bash
-Copy
-Edit
-CONTAINER ID   IMAGE             COMMAND                  STATUS          PORTS
-abcd1234       netdata/netdata   "/usr/sbin/run.sh"       Up 2 minutes    0.0.0.0:19999->19999/tcp
+CONTAINER ID   IMAGE                                                     COMMAND               STATUS                                   PORTS
+d2dd13005d661f9f25325927d15ff24d713014408dd7be87802c28f567d1e21e       netdata/netdata   "/usr/sbin/run.sh"       Up 2 minutes    0.0.0.0:19999->19999/tcp
 3. Accessed Netdata Dashboard
 Opened a browser and visited:
-
-arduino
-Copy
-Edit
 http://localhost:19999
 Or, if needed:
-
-bash
-Copy
-Edit
 docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' netdata
 Then open:
-
-cpp
-Copy
-Edit
-http://<container-ip>:19999
+http://172.17.0.2:19999
 📊 Monitored Metrics
 CPU usage per core
 
@@ -62,3 +41,4 @@ Docker container statistics
 System load averages
 
 📷 Screenshots
+
